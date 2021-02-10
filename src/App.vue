@@ -5,16 +5,23 @@
     </header>
     <ul>
       <!-- Attributes should be in kabob-case -->
+
+      <!-- w/ v-for to create multiple friend-contact elements -->
       <friend-contact
-      name='Derrick'
-      phone-number='205-930-2328'
-      email-address='derrick@email.com'
-      is-favorite='1'
+        v-for="friend in friends"
+        :key="friend.id"
+        :name="friend.name"
+        :phone-number="friend.phone"
+        :email-address="friend.email"
+        :is-favorite="true"
       ></friend-contact>
+
+      <!-- w/o v-for -->
       <friend-contact
-      name='Sam'
-      phone-number='706-930-2328'
-      email-address='sam@email.com'
+        name="Summer"
+        phone-number="706-930-2328"
+        email-address="summer@email.com"
+        :is-favorite="false"
       >
       </friend-contact>
     </ul>
@@ -25,6 +32,20 @@
 export default {
   data() {
     return {
+      friends: [
+        {
+          id: "derrickm",
+          name: "Derrick M",
+          phone: "706-888-3333",
+          email: "derrickm@email.com",
+        },
+        {
+          id: "sama",
+          name: "Sam A",
+          phone: "205-888-3333",
+          email: "sama@email.com",
+        },
+      ],
     };
   },
 };
